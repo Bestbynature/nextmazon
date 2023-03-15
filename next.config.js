@@ -4,7 +4,7 @@ const nextConfig = {
     serverActions: true,
   },
   images: {
-    remotePatterns: [{hostname: "images.unsplash.com"}],
+    remotePatterns: [{hostname: "images.unsplash.com"}, {hostname: "cdn.pixabay.com"}, {hostname: "lh3.googleusercontent.com"}],
   }
 }
 
