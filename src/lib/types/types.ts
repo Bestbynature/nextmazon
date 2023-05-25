@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../db/prisma';
+import { Session } from 'next-auth';
 
 export interface Product {
   id: string;
@@ -41,9 +42,40 @@ export type CartWithProducts = Prisma.CartGetPayload<{
   };
 }>;
 
+export type CartItemWithProducts = Prisma.CartItemGetPayload<{
+  include: {
+    product: true;
+  };
+}>
+
 export type ShoppingCart =
   | (CartWithProducts & {
       size: number;
       subtotal: number;
     })
   | null;
+
+  export interface ShoppingCartButtonprops {
+    cart: ShoppingCart | null;
+  }
+
+  export interface UserMenuButtonProps {
+    session: Session | null;
+  }
+
+  export interface PaginationBarProps {
+    currentPage: number;
+    totalPage: number;
+  }
+
+  export interface HomeProps {
+    searchParams: {
+      page: string;
+    }
+  }
+
+  export interface SearchPageProps {
+    searchParams: {
+     query: string;
+    }
+  }
