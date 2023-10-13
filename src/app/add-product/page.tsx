@@ -17,6 +17,8 @@ const addproduct = async (formData: FormData) => {
     throw new Error('Please fill all fields');
   }
 
+  console.log({ name, description, imageUrl, price })
+
   await prisma.product.create({
     data: { name, description, imageUrl, price },
   });
