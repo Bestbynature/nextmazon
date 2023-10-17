@@ -13,6 +13,7 @@
     "@prisma/client": "^5.4.1",
     "daisyui": "^3.9.2",
     "eslint-config-prettier": "^9.0.0",
+    "firebase": "^10.5.0",
     "next": "13.5.4",
     "next-auth": "^4.23.2",
     "prettier": "^3.0.3",

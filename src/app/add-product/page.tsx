@@ -1,11 +1,13 @@
 import { prisma } from '@/lib/db/prisma';
 import { redirect } from 'next/navigation';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '@/firebase';
 
 export const metadata = {
   title: 'Add product - NextMazon',
 };
 
-const addproduct = async (formData: FormData) => {
+const addItems = async (formData: FormData) => {
   "use server";
 
   const name = formData.get('name')?.toString();
@@ -17,20 +19,45 @@ const addproduct = async (formData: FormData) => {
     throw new Error('Please fill all fields');
   }
 
-  console.log({ name, description, imageUrl, price })
-
-  await prisma.product.create({
-    data: { name, description, imageUrl, price },
+  const docRef = await addDoc(collection(db, 'products'), {
+    name,
+    description,
+    imageUrl,
+    price,
   });
 
+  console.log('Document written with ID: ', docRef.id);
   redirect('/');
-};
+}
+
+
+
+// const addproduct = async (formData: FormData) => {
+//   "use server";
+
+//   const name = formData.get('name')?.toString();
+//   const description = formData.get('description')?.toString();
+//   const imageUrl = formData.get('imageUrl')?.toString();
+//   const price = Number(formData.get('price')) || 0;
+
+//   if (!name || !description || !imageUrl || !price) {
+//     throw new Error('Please fill all fields');
+//   }
+
+//   console.log({ name, description, imageUrl, price })
+
+//   await prisma.product.create({
+//     data: { name, description, imageUrl, price },
+//   });
+
+//   redirect('/');
+// };
 
 const AddProduct = () => {
   return (
     <div>
       <h1 className="mb-3 text-lg font-bold"> AddProduct </h1>
-      <form action={addproduct}>
+      <form action={addItems}>
         <input
           className="input mb-3 w-full input-bordered"
           required
