@@ -21,7 +21,14 @@ const GetProducts = () => {
 
   return (
     <div>
-      <h1>GetProducts</h1>
+      <h1>GetProducts Page</h1>
+      {/* <button onClick={getProducts}>Get Products</button> */}
+      {products.map((product: any) => (
+        <div key={product.id}>
+          <h2>{product.name}</h2>
+          <p>{product.price}</p>
+        </div>
+          ))}
 
     </div>
   )
