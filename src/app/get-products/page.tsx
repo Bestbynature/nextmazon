@@ -7,10 +7,11 @@ import { db } from '@/firebase';
 
 const GetProducts = () => {
 
+  let products: any = [];
+
   useEffect(() => {
     const q = query(collection(db, "products"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const products: any = [];
       querySnapshot.forEach((doc) => {
         products.push({...doc.data(), id: doc.id});
       });
