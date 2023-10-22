@@ -1,7 +1,7 @@
 import { prisma } from '@/lib/db/prisma';
 import { redirect } from 'next/navigation';
-import { collection, addDoc } from 'firebase/firestore';
-import { db } from '@/firebase';
+// import { collection, addDoc } from 'firebase/firestore';
+// import { db } from '@/firebase';
 import FormSubmit from '@/components/FormSubmit';
 
 export const metadata = {
@@ -20,14 +20,18 @@ const addItems = async (formData: FormData) => {
     throw new Error('Please fill all fields');
   }
 
-  const docRef = await addDoc(collection(db, 'products'), {
-    name,
-    description,
-    imageUrl,
-    price,
+  await prisma.product.create({
+    data: { name, description, imageUrl, price },
   });
 
-  console.log('Document written with ID: ', docRef.id);
+  // const docRef = await addDoc(collection(db, 'products'), {
+  //   name,
+  //   description,
+  //   imageUrl,
+  //   price,
+  // });
+
+  // console.log('Document written with ID: ', docRef.id);
   redirect('/');
 }
 

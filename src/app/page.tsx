@@ -1,30 +1,20 @@
-import { db } from '@/firebase';
-import { collection, onSnapshot, query } from 'firebase/firestore';
+import Hero from '@/components/Hero';
 import ProductCard from '@/components/productCard';
-import Image from 'next/image';
+import { prisma } from '@/lib/db/prisma';
+
 
 export default async function Home() {
+  const products = await prisma.product.findMany({
+    orderBy: {createdAt: "desc"}
+  })
 
-  
-  // useEffect(() => {
-    const getProducts = async () => {
-      "use server"
-      let products: any = [];
-    const q = query(collection(db, "products"));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        products.push({...doc.data(), id: doc.id});
-      });
-      console.log("Current products: ", products.join(", "));
-      return products;
-      // return unsubscribe();
-    })
-  }
-  let products = getProducts();
-  // }, [])
   return (
     <div>
-       <ProductCard products={()=>getProducts()}/>
+      <Hero product={products[0]} />
+
+      <div className='my-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4'>
+        <ProductCard products={products.slice(1)}/>
+      </div>
     </div>
   );
 }
