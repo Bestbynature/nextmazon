@@ -2,6 +2,7 @@ import { prisma } from '@/lib/db/prisma';
 import { redirect } from 'next/navigation';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
+import FormSubmit from '@/components/FormSubmit';
 
 export const metadata = {
   title: 'Add product - NextMazon',
@@ -85,9 +86,9 @@ const AddProduct = () => {
           placeholder="Product Price"
           type="number"
         />
-        <button type="submit" className="btn btn-primary btn-block">
+        <FormSubmit className='btn-block' >
           Add Product
-        </button>
+        </FormSubmit>
       </form>
     </div>
   );
