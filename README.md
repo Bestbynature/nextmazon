@@ -4,6 +4,7 @@
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
+    - [Live Demo](#live-demo)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -67,6 +68,12 @@ This is a simple Ecommerce app built with Next JS, Prisma, Supabase and React. I
 - View Product details
 - Add to cart
 - Checkout
+
+### Live Demo <a name="live-demo"></a>
+
+[Live Demo Link](https://nextmazon.vercel.app/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
