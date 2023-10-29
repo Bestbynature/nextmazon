@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import Navbar from './Navbar/navbar';
 import Footer from './Footer';
 import SessionProvider from './SessionProvider';
+// import logo from '../assets/logo-no-background.png'
 
 const inter = Inter({ subsets: ['latin'] });
 
