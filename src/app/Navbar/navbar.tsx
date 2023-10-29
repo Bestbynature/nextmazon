@@ -26,8 +26,8 @@ const Navbar = async () => {
   const cart = await getCart();
 
   return (
-    <div className="bg-base-300">
-      <div className="navbar  max-w-[80%] min-w-[300px] m-auto, flex-col sm:flex-row gap-2">
+    <div className="bg-base-300 w-full">
+      <div className="navbar  max-w-[80%] min-w-[300px] m-auto flex-col lg:flex-row gap-2">
         <div className="flex-1 ">
           <Link href="/" className="btn btn-ghost text-xl normal-case">
             <Image src={logo} alt="Nextmazon Logo" width={50} height={50} title="NextMazon Logo" />
@@ -35,6 +35,7 @@ const Navbar = async () => {
           </Link>
         </div>
 
+        <div className='flex flex-col md:flex-row'>
         <div>
           <Link href="/" className="btn btn-ghost">
             Products
@@ -47,7 +48,7 @@ const Navbar = async () => {
           </Link>
         </div>
 
-        <div className="flex-none gap-2">
+        <div className="flex flex-row gap-2">
           <form action={searchProducts}>
             <div className="form-control">
               <input
@@ -60,6 +61,7 @@ const Navbar = async () => {
           </form>
           <ShoppingCartButton cart={cart} />
           <UserMenuButton session={session} />
+        </div>
         </div>
       </div>
     </div>
