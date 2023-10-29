@@ -6,17 +6,14 @@ import { Metadata } from 'next';
 import { cache } from 'react';
 import AddToCartButton from './AddToCartButton';
 import IncrementProductQuantity from './actions';
+import { ProductPageProps } from '@/lib/types/types';
 
-export async function generateMetadata({
-  searchParams: { id },
-}: {
-  searchParams: { id: string };
-}): Promise<Metadata> {
+export async function generateMetadata({params: {id}}: ProductPageProps): Promise<Metadata> {
   const product = await getProduct(id);
 
   return {
-    title: product?.name + ' | Next.js Ecommerce',
-    description: product?.description,
+    title: product?.name + ' | Next.js Ecommerce' || '',
+    description: product?.description || '',
     openGraph: {
       images: [
         {
@@ -34,14 +31,20 @@ const getProduct = cache(async (id: string) => {
   const product = await prisma.product.findUnique({
     where: { id },
   });
+
+  if(!product) return null;
   return product;
 });
 
-export default function ProductPage({ searchParams: { id } }: { searchParams: { id: string } }) {
-  const loadProduct = async () => {
+export default async function ProductPage({params: {id}}: ProductPageProps) {
+  // export default async function ProductPage({ searchParams: { id } }: { searchParams: { id: string } }) {
+  // const loadProduct = async () => {
     const product = await getProduct(id as string);
 
-    if (product) {
+    if(!product) {
+      return <NotFound />
+    }
+
       return (
         <div className="flex flex-col lg:flex-row gap-4 lg:items-center">
           <Image
@@ -64,10 +67,6 @@ export default function ProductPage({ searchParams: { id } }: { searchParams: { 
           </div>
         </div>
       );
-    } else {
-      return <NotFound />;
-    }
-  };
 
-  return <>{loadProduct()}</>;
+  // return <>{loadProduct()}</>;
 }

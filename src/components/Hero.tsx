@@ -17,7 +17,8 @@ const Hero = ({ product }: { product: Product }) => {
         <h1 className="text-5xl font-bold">{product.name}</h1>
         <p className="py-6 pr-6 text-justify">{product.description}</p>
         <Link
-          href={'/products/' + product.id + '?id=' + product.id}
+          href={'/products/' + product.id}
+          // href={'/products/' + product.id + '?id=' + product.id}
           className="btn btn-secondary btn-lg"
         >
           Check it out

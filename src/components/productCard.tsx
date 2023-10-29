@@ -15,9 +15,9 @@ const ProductCard = ({ products }: ProductCardProps) => {
           <Link
             href={{
               pathname: '/products/' + product.id,
-              query: { id: product.id },
+              // query: { id: product.id },
             }}
-            as={`/products/${product.id}?id=${product.id}`}
+            // as={`/products/${product.id}?id=${product.id}`}
             className="card w-full bg-base-100 hover:shadow-xl transition-shadow duration-300 ease-in-out"
           >
             <figure>

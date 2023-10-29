@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'NextMazon',
-  description: 'We make it easy to buy things online',
+  description: 'The future of shopping, today',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
