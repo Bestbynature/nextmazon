@@ -12,12 +12,12 @@ export const metadata = {
 const addItems = async (formData: FormData) => {
   'use server';
 
-  const session = getServerSession(authOptions)
+  const session = getServerSession(authOptions);
 
   if (!session) {
-      redirect('/api/auth/signin?callbackUrl=/add-product')
+    redirect('/api/auth/signin?callbackUrl=/add-product');
   }
-  
+
   const name = formData.get('name')?.toString();
   const description = formData.get('description')?.toString();
   const imageUrl = formData.get('imageUrl')?.toString();
@@ -41,27 +41,26 @@ const addItems = async (formData: FormData) => {
 };
 
 const AddProduct = async () => {
-  const session = await getServerSession(authOptions)
+  const session = await getServerSession(authOptions);
 
   if (!session) {
-      redirect('/api/auth/signin?callbackUrl=/add-product')
+    redirect('/api/auth/signin?callbackUrl=/add-product');
   }
 
   const formFields = [
-    { name: "name", placeholder: "Product Name", type: "text", mode: 1 },
-    { name: "description", placeholder: "Product Description", type: "text", mode: 2},
+    { name: 'name', placeholder: 'Product Name', type: 'text', mode: 1 },
+    { name: 'description', placeholder: 'Product Description', type: 'text', mode: 2 },
     // { name: "imageUrl", placeholder: "Image URL", type: "url", mode: 1 },
-    { name: "price", placeholder: "Product Price", type: "number", mode: 1 },
+    { name: 'price', placeholder: 'Product Price', type: 'number', mode: 1 },
   ];
-  
+
   return (
     <div>
       <h1 className="mb-3 text-lg font-bold">Add Product</h1>
       <form action={addItems}>
-
         <UploadProductImage />
 
-        {formFields.map((field, index) => (
+        {formFields.map((field, index) =>
           field.mode === 1 ? (
             <input
               key={index}
@@ -80,12 +79,11 @@ const AddProduct = async () => {
               className="textarea-bordered textarea w-full mb-3"
             />
           )
-        ))}
+        )}
         <FormSubmit className="btn-block">Add Product</FormSubmit>
       </form>
     </div>
-  )
-  
+  );
 
   // return (
   //   <div>

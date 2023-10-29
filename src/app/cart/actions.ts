@@ -20,7 +20,7 @@ export async function setProductQuantity(productId: string, quantity: number) {
             },
           },
         },
-      })
+      });
       // await prisma.cartItem.update({
       //   where: { id: item.id },
       //   data: { quantity },
@@ -33,7 +33,7 @@ export async function setProductQuantity(productId: string, quantity: number) {
             delete: { id: item.id },
           },
         },
-      })
+      });
       // await prisma.cartItem.delete({ where: { id: item.id } });
     }
   } else {
@@ -47,7 +47,7 @@ export async function setProductQuantity(productId: string, quantity: number) {
           },
         },
       },
-    })
+    });
     // await prisma.cartItem.create({
     //   data: {
     //     cartId: cart!.id,
