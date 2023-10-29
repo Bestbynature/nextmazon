@@ -23,6 +23,8 @@ export async function generateMetadata({params: {id}}: ProductPageProps): Promis
           alt: product?.name,
         },
       ],
+      title: product?.name + ' | Next.js Ecommerce' || '',
+      description: product?.description || '',
     },
   };
 }
