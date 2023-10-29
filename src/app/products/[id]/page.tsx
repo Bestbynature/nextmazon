@@ -67,6 +67,4 @@ export default async function ProductPage({params: {id}}: ProductPageProps) {
           </div>
         </div>
       );
-
-  // return <>{loadProduct()}</>;
 }
