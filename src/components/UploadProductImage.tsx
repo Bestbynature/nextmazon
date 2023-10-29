@@ -3,7 +3,6 @@ import { supabase } from '@/lib/supabase';
 import Image from 'next/image';
 import { useState, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { set } from 'zod';
 
 const UploadProductImage = () => {
   const [imageUrl, setImageUrl] = useState<string | undefined>('');
