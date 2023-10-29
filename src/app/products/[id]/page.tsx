@@ -39,8 +39,6 @@ const getProduct = cache(async (id: string) => {
 });
 
 export default async function ProductPage({params: {id}}: ProductPageProps) {
-  // export default async function ProductPage({ searchParams: { id } }: { searchParams: { id: string } }) {
-  // const loadProduct = async () => {
     const product = await getProduct(id as string);
 
     if(!product) {
