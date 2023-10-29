@@ -24,7 +24,7 @@ export async function generateMetadata({params: {id}}: ProductPageProps): Promis
         },
       ],
       title: product?.name + ' | Next.js Ecommerce' || '',
-      description: product?.description || '',
+      description: product?.description.slice(0, 299) || '',
     },
   };
 }
