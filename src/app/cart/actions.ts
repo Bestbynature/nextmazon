@@ -10,21 +10,51 @@ export async function setProductQuantity(productId: string, quantity: number) {
 
   if (item) {
     if (quantity > 0) {
-      await prisma.cartItem.update({
-        where: { id: item.id },
-        data: { quantity },
-      });
+      await prisma.cart.update({
+        where: { id: cart!.id },
+        data: {
+          items: {
+            update: {
+              where: { id: item.id },
+              data: { quantity },
+            },
+          },
+        },
+      })
+      // await prisma.cartItem.update({
+      //   where: { id: item.id },
+      //   data: { quantity },
+      // });
     } else {
-      await prisma.cartItem.delete({ where: { id: item.id } });
+      await prisma.cart.update({
+        where: { id: cart!.id },
+        data: {
+          items: {
+            delete: { id: item.id },
+          },
+        },
+      })
+      // await prisma.cartItem.delete({ where: { id: item.id } });
     }
   } else {
-    await prisma.cartItem.create({
+    await prisma.cart.update({
+      where: { id: cart!.id },
       data: {
-        cartId: cart!.id,
-        productId,
-        quantity,
+        items: {
+          create: {
+            productId,
+            quantity,
+          },
+        },
       },
-    });
+    })
+    // await prisma.cartItem.create({
+    //   data: {
+    //     cartId: cart!.id,
+    //     productId,
+    //     quantity,
+    //   },
+    // });
   }
 
   revalidatePath('/cart');
