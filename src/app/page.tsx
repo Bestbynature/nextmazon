@@ -1,8 +1,8 @@
+import { prisma } from '@/lib/db/prisma';
 import Hero from '@/components/Hero';
+import { HomeProps } from '@/lib/types/types';
 import PaginationBar from '@/components/PaginationBar';
 import ProductCard from '@/components/productCard';
-import { prisma } from '@/lib/db/prisma';
-import { HomeProps } from '@/lib/types/types';
 
 // export const revalidate = 0;
 
@@ -10,10 +10,10 @@ export default async function Home({ searchParams: { page = '1' } }: HomeProps) 
   const currentPage = parseInt(page);
 
   const pageSize = 6;
-
-  const heroItemCount = 1;
-
+  
   const totalItemCount = await prisma.product.count();
+  
+  const heroItemCount = 1;
 
   const totalPages = Math.ceil((totalItemCount - heroItemCount) / pageSize);
 
