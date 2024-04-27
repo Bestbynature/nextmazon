@@ -45,7 +45,10 @@ const AddProduct = async () => {
 
   if (!session) {
     redirect('/api/auth/signin?callbackUrl=/add-product');
+  }else {
+    redirect('/')
   }
+
 
   const formFields = [
     { name: 'name', placeholder: 'Product Name', type: 'text', mode: 1 },
@@ -57,7 +60,7 @@ const AddProduct = async () => {
   return (
     <div>
       <h1 className="mb-3 text-lg font-bold">Add Product</h1>
-      <form action={addItems}>
+      <form action={addItems}> 
         <UploadProductImage />
 
         {formFields.map((field, index) =>
