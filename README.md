@@ -105,7 +105,7 @@ To run the project, execute the following command:
 
 - GitHub: [@githubhandle](https://github.com/Bestbynature)
 - Twitter: [@twitterhandle](https://twitter.com/Dammybest)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/damilareismailabestbynature/)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/damilareismaila/)
 
 
 
